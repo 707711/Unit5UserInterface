@@ -15,6 +15,7 @@ public class Target : MonoBehaviour
     private GameManager gameManager;
 
     public int pointValue;
+    public int livesValue;
 
     public ParticleSystem explosionParticle;
 
@@ -50,6 +51,8 @@ public class Target : MonoBehaviour
         Destroy(gameObject);
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
         gameManager.UpdateScore(pointValue);
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,7 +62,18 @@ public class Target : MonoBehaviour
             Destroy(gameObject);
             if (!gameObject.CompareTag("Bad"))
             {
+                gameManager.UpdateLives(-1);
                 gameManager.GameOver();
+
+                //gameManager.UpdateLives(-1);
+            }
+            
+            //if (!gameObject.CompareTag("Bad") = Destroy)
+
+            else if (gameManager.lives <= 0)
+            {
+                gameManager.lives = 0;
+                gameManager.UpdateLives(0);
             }
         }
     }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6943821519460720510}
   - component: {fileID: 3504592725411423802}
   - component: {fileID: 793087259497787928}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Good 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,4 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointValue: 1
+  livesValue: 0
   explosionParticle: {fileID: 4758139293545943008, guid: c7ad2532a6eeb40b59033c75e71fa054, type: 3}

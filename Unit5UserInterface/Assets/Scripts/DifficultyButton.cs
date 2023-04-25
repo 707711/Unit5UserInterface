@@ -11,6 +11,8 @@ public class DifficultyButton : MonoBehaviour
 
     public int difficulty;
 
+    private int spawnRate;
+
     // Start is called before the first frame update
     void Start()
     {
