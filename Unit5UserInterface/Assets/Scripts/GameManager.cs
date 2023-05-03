@@ -24,10 +24,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject titleScreen;
 
+    public bool isGamePaused;
+
+    public GameObject pauseScreen;
+
     // Start is called before the first frame update
     void Start()
     {
         isGameActive = false;
+        isGamePaused = false;
         StartCoroutine(SpawnTarget());
 
         score = 0;
@@ -39,6 +44,7 @@ public class GameManager : MonoBehaviour
     public void StartGame(int difficulty)
     {
         isGameActive = true;
+       
         score = 0;
         lives = 0;
         StartCoroutine(SpawnTarget());
@@ -46,6 +52,26 @@ public class GameManager : MonoBehaviour
         UpdateLives(3);
 
         titleScreen.gameObject.SetActive(false);
+    }
+
+    public void pauseGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isGamePaused = !isGamePaused;
+            if(isGamePaused)
+            {
+                pauseScreen.gameObject.SetActive(true);
+                Time.timeScale = 0;
+                AudioListener.pause = true;
+            }
+            else
+            {
+                pauseScreen.gameObject.SetActive(false);
+                Time.timeScale = 1;
+                AudioListener.pause = false;
+            }
+        }
     }
 
     public void GameOver()
@@ -76,7 +102,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        pauseGame();
     }
 
     public void UpdateScore(int scoreToAdd)
